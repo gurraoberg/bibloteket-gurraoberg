@@ -82,4 +82,11 @@ public class LibraryContent implements LibraryContentInterface {
             //System.out.println("File Not Found");
         }
     }
+
+    public String registerItem(String title, String purchasePrice, String uniqueStat, String fileName) throws IOException {
+        Book book = new Book();
+        String toAdd = book.capitalizeString(title) + ", " + purchasePrice + ", " + uniqueStat;
+        writeToCSV(fileName, toAdd);
+        return toAdd;
+    }
 }
