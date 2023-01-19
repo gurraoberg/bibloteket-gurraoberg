@@ -28,33 +28,54 @@ public class App
 
         int choice;
         while(mainLoop){
-            System.out.println("\nLibrary Main Menu\n");
-            System.out.print("1. Register new item\n");
-            System.out.print("2. List library\n");
-            System.out.print("3. Download library content\n");
-            System.out.print("0. Exit");
-            System.out.print("\nEnter Your Menu Choice: ");
+            System.out.println(mainMenu());
+            System.out.print("\nEnter your menu choice: ");
 
             try {
                 choice = sc.nextInt();
 
                 switch(choice){
                     case 1:
-                        System.out.println(""); // For looks
-                        sc.nextLine();
+                        System.out.println(addItemMenu());
+                        System.out.print("Enter your choice: ");
+                        int subMenuChoice = sc.nextInt();
+                        if (subMenuChoice == 1) {
+                            System.out.println(""); // For looks
+                            sc.nextLine();
 
-                        System.out.println("## Register a new book");
-                        System.out.print("Book Title: ");
-                        String readTitle = sc.nextLine();
-                        System.out.print("Purchase Price: ");
-                        String readPrice = sc.nextLine();
-                        System.out.print("Pages: ");
-                        String readAmountOfPages = sc.nextLine();
+                            System.out.println("## Register a new book");
+                            System.out.print("Book Title: ");
+                            String readTitle = sc.nextLine();
+                            System.out.print("Purchase Price: ");
+                            String readPrice = sc.nextLine();
+                            System.out.print("Pages: ");
+                            String readAmountOfPages = sc.nextLine();
 
-                        String toAdd = book.registerBook(readTitle, readPrice, readAmountOfPages);
-                        bookList.add(toAdd);
+                            String addBook = content.registerItem(readTitle, readPrice, readAmountOfPages, "bookList.csv");
+                            bookList.add(addBook);
 
-                        System.out.println("Added " + book.capitalizeString(readTitle) + " to library.");
+                            System.out.println("Added " + book.capitalizeString(readTitle) + " to library.");
+                        }
+                        else if (subMenuChoice == 2) {
+                            // Do register CD
+                            System.out.println(""); // For looks
+                            sc.nextLine();
+
+                            System.out.println("## Register a new CD");
+                            System.out.print("Album Title: ");
+                            String readTitle = sc.nextLine();
+                            System.out.print("Purchase Price: ");
+                            String readPrice = sc.nextLine();
+                            System.out.print("Amount of tracks: ");
+                            String readTracks = sc.nextLine();
+
+                            String addCD = content.registerItem(readTitle, readPrice, readTracks, "cdList.csv");
+                            cdList.add(addCD);
+                        }
+                        else if (subMenuChoice == 3 ) {
+                            // Do register Movie
+                            System.out.println("Register Movie");
+                        }
                         Thread.sleep(700);
                         break;
                     case 2:
@@ -77,6 +98,16 @@ public class App
             }
         }
         sc.close();
+    }
+
+    private static String addItemMenu () {
+        String itemMenu = "1. Register Book\n2. Register CD\n3. Register Movie";
+        return itemMenu;
+    }
+
+    private static String mainMenu() {
+        String mainMenu = "\nLibrary Main Menu\n1. Register new item\n2. List library\n3. Download library content\n0. Exit\nEnter your menu choice: ";
+        return mainMenu;
     }
 }
 
