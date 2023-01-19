@@ -2,9 +2,8 @@ package se.nackademin;
 
 import java.io.*;
 import java.util.List;
-import java.util.Scanner;
 
-public class LibraryContent {
+public class LibraryContent implements LibraryContentInterface {
     private String title;
     private float purchasePrice;
 
@@ -64,14 +63,15 @@ public class LibraryContent {
         System.out.println("------------------------------------------");
     }
 
+    @Override
     public void writeToCSV(String fileName, String toAdd) throws IOException {
-        //FileWriter writer = new FileWriter("data.csv");
         FileWriter writer = new FileWriter(fileName, true);
         writer.write(toAdd);
         writer.write("\n");
         writer.close();
     }
 
+    @Override
     public void readFromCSV(String fileName, List<String> bookList) throws IOException {
         try(BufferedReader br = new BufferedReader(new FileReader(fileName))) {
             String line = "";
