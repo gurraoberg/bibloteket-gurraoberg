@@ -6,9 +6,13 @@ import java.util.List;
 import java.lang.Math;
 
 public class CD extends LibraryContent {
-    
-    public CD(String title, float purchasePrice, int tracks) {
+    int tracks;
+    String artist;
+
+    public CD(String title, float purchasePrice, int tracks, String artist) {
         super(title, purchasePrice);
+        this.tracks = tracks;
+        this.artist = artist;
     }
 
     public CD() {}

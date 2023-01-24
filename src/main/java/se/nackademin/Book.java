@@ -4,9 +4,13 @@ import java.io.IOException;
 import java.util.List;
 
 public class Book extends LibraryContent {
+    int pages;
+    String author;
 
-    public Book(String title, float purchasePrice, int pages) {
+    public Book(String title, float purchasePrice, int pages, String author) {
         super(title, purchasePrice);
+        this.pages = pages;
+        this.author = author;
     } 
 
     public Book() {}
