@@ -14,6 +14,7 @@ public class LibraryContent implements LibraryContentInterface {
 
     public LibraryContent() {}
 
+    @Override
     public void getLibraryContent(List<String> bookList, List<String> cdList, List<String> movieList) {
         getBookContent(bookList);
         getCDContent(cdList);
@@ -25,8 +26,8 @@ public class LibraryContent implements LibraryContentInterface {
         System.out.println("Title | Purchase Price(sek) | Pages");
         System.out.println("------------------------------------------");
         if (list.size() > 0) {
-            for (int i = 0; i < list.size();i++) {
-                System.out.println(list.get(i));
+            for (String book : list) {
+                System.out.println(book);
             }
         }
         else {
@@ -72,21 +73,14 @@ public class LibraryContent implements LibraryContentInterface {
     }
 
     @Override
-    public void readFromCSV(String fileName, List<String> bookList) throws IOException {
+    public void readFromCSV(String fileName, List<String> list) throws IOException {
         try(BufferedReader br = new BufferedReader(new FileReader(fileName))) {
             String line = "";
             while ((line = br.readLine()) != null) {
-                bookList.add(line);
+                list.add(line);
             }
         } catch (FileNotFoundException e) {
-            //System.out.println("File Not Found");
+            System.out.println("File Not Found");
         }
-    }
-
-    public String registerItem(String title, String purchasePrice, String uniqueStat, String fileName) throws IOException {
-        Book book = new Book();
-        String toAdd = book.capitalizeString(title) + ", " + purchasePrice + ", " + uniqueStat;
-        writeToCSV(fileName, toAdd);
-        return toAdd;
     }
 }
