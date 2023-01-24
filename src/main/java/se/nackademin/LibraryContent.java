@@ -22,9 +22,9 @@ public class LibraryContent implements LibraryContentInterface {
     }
 
     private void getBookContent(List<String> list) {
-        System.out.println("-------------------Book-------------------");
-        System.out.println("Title | Purchase Price(sek) | Pages");
-        System.out.println("------------------------------------------");
+        System.out.println("--------------------------Books---------------------------");
+        System.out.println("Title | Purchase Price(sek) | Pages | Author");
+        System.out.println("----------------------------------------------------------");
         if (list.size() > 0) {
             for (String book : list) {
                 System.out.println(book);
@@ -36,9 +36,9 @@ public class LibraryContent implements LibraryContentInterface {
     }
 
     private void getCDContent(List<String> list) {
-        System.out.println("--------------------CD--------------------");
-        System.out.println("Title | Purchase Price(sek) | Track Amount");
-        System.out.println("------------------------------------------");
+        System.out.println("----------------------------CD----------------------------");
+        System.out.println("Title | Purchase Price(sek) | Track Amount | Year | Artist");
+        System.out.println("----------------------------------------------------------");
         if (list.size() > 0) {
             for (int i = 0; i < list.size();i++) {
                 System.out.println(list.get(i));
@@ -50,9 +50,9 @@ public class LibraryContent implements LibraryContentInterface {
     }
 
     private void getMovieContent(List<String> list) {
-        System.out.println("------------------Movies------------------");
-        System.out.println("Title | Purchase Price(sek) | Playtime");
-        System.out.println("------------------------------------------");
+        System.out.println("--------------------------Movies--------------------------");
+        System.out.println("Title | Purchase Price(sek) | Director | Playtime(min)");
+        System.out.println("----------------------------------------------------------");
         if (list.size() > 0) {
             for (int i = 0; i < list.size();i++) {
                 System.out.println(list.get(i));
@@ -61,7 +61,7 @@ public class LibraryContent implements LibraryContentInterface {
         else {
             System.out.println("No data");
         }
-        System.out.println("------------------------------------------");
+        System.out.println("----------------------------------------------------------");
     }
 
     @Override
