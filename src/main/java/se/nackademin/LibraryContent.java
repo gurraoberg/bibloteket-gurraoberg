@@ -1,6 +1,7 @@
 package se.nackademin;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -95,10 +96,14 @@ public class LibraryContent implements LibraryContentInterface {
         }
     }
 
-    public void getTitleFromLibrary(List<String> list, String input) {
+    public void getTitleFromLibrary(List<String> bookList, List<String> cdList, List<String> movieList, String input) {
+        List<String> libraryList = new ArrayList<String>();
+        libraryList.addAll(bookList);
+        libraryList.addAll(movieList);
+        libraryList.addAll(cdList);
         String[] attributes = null;
-        if (list.size() > 0) {
-            for (String library : list) {
+        if (libraryList.size() > 0) {
+            for (String library : libraryList) {
                 attributes = library.split(", ");
                 String title = attributes[0];
                 if (title.contains(input)) {

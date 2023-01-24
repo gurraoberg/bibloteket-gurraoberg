@@ -138,7 +138,7 @@ public class App
                         sc.nextLine();
                         System.out.print("Item Title: ");
                         String readTitle = sc.nextLine();
-                        content.getTitleFromLibrary(movieList, capitalizeString(readTitle));
+                        content.getTitleFromLibrary(bookList, cdList, movieList, capitalizeString(readTitle));
                         break;
                     default :
                         System.out.println("\nInvalid input");
