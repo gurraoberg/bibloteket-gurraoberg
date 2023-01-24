@@ -6,6 +6,7 @@ import java.util.List;
 public class Movie extends LibraryContent {
     int playTime;
     String director;
+    float totalMovieValue = 0f;
 
     public Movie(String title, float purchasePrice, int playTime, String director) {
         super(title, purchasePrice);
@@ -14,6 +15,10 @@ public class Movie extends LibraryContent {
     }
 
     public Movie() {}
+
+    public Movie(float totalMovieValue) {
+        this.totalMovieValue = totalMovieValue;
+    }
 
     /* Method to add a movie into the library. */
     public String registerMovie(String title, String purchasePrice, String playTime, String director, String fileName) throws IOException {
@@ -28,21 +33,28 @@ public class Movie extends LibraryContent {
     */
     public float getTotalMovieValue(List<String> list) {
         String[] attributes = null;
-        float totalValue = 0;
         if (list.size() > 0) {
             for (String movie : list) {
                 attributes = movie.split(", ");
                 float price = Float.parseFloat(attributes[1]);
-                int playTime = Integer.parseInt(attributes[3]);
-                if (playTime > 100) {
+                this.playTime = Integer.parseInt(attributes[2]);
+                if (this.playTime > 100) {
                     int addSek = playTime - 100;
-                    totalValue += price + addSek;
+                    this.totalMovieValue += price + addSek;
                 }
                 else {
-                    totalValue += price;
+                    this.totalMovieValue += price;
                 }
             }
         }
-        return totalValue;
+        return this.totalMovieValue;
+    }
+
+    public String getDirector() {
+        return this.director;
+    }
+
+    public int getPlayTime() {
+        return this.playTime;
     }
 }

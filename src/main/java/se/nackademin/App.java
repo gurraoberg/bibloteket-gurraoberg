@@ -95,7 +95,7 @@ public class App
                             System.out.print("Playtime(min): ");
                             String readPlayTime= sc.nextLine();
 
-                            String addMovie = movie.registerMovie(readTitle, readPrice, readDirector, readPlayTime, "movieList.csv");
+                            String addMovie = movie.registerMovie(readTitle, readPrice, readPlayTime, readDirector, "movieList.csv");
                             movieList.add(addMovie);
                         }
                         Thread.sleep(700);

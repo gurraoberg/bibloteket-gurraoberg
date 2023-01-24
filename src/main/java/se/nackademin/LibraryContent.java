@@ -9,6 +9,7 @@ import java.util.List;
 public class LibraryContent implements LibraryContentInterface {
     private String title;
     private float purchasePrice;
+    private float totalValue;
 
     public LibraryContent(String title, float purchasePrice) {
         this.title = title;
@@ -16,6 +17,10 @@ public class LibraryContent implements LibraryContentInterface {
     }
 
     public LibraryContent() {}
+
+    public LibraryContent(float totalValue) {
+        this.totalValue = totalValue;
+    }
 
     /* Calculates the total value of the whole library. */
     public float getTotalValue(List<String> bookList, List<String> cdList, List<String> movieList) {
@@ -25,7 +30,8 @@ public class LibraryContent implements LibraryContentInterface {
         float bookValue = book.getTotalBookValue(bookList);
         CD cd = new CD();
         float cdValue = cd.getTotalCDValue(cdList);
-        return movieValue + bookValue + cdValue;
+        this.totalValue = movieValue + bookValue + cdValue;
+        return this.totalValue;
     }
 
     @Override
@@ -120,5 +126,13 @@ public class LibraryContent implements LibraryContentInterface {
                 }
             }
         }
+    }
+
+    public String getTitle() {
+        return this.title;
+    }
+
+    public float getPurchasePrice() {
+        return this.purchasePrice;
     }
 }
