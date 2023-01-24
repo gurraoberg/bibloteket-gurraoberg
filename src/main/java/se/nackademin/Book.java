@@ -1,5 +1,6 @@
 package se.nackademin;
 
+import java.io.IOException;
 import java.util.List;
 
 public class Book extends LibraryContent {
@@ -10,11 +11,16 @@ public class Book extends LibraryContent {
 
     public Book() {}
 
-    public String capitalizeString(String toCapitalize) {
-        String newString = toCapitalize.substring(0,1).toUpperCase() + toCapitalize.substring(1);
-        return newString;
+    /* Method to add a book into the library. */
+    public String registerBook(String title, String purchasePrice, String pages,String author, String fileName) throws IOException {
+        String toAdd = App.capitalizeString(title) + ", " + purchasePrice + ", " + pages + ", " + App.capitalizeString(author);
+        writeToCSV(fileName, toAdd);
+        return toAdd;
     }
 
+    /* Method to calculate the total value of all the books that are in the library.
+    /* A book always has the same value.
+    */
     public float getTotalBookValue(List<String> list) {
         String[] attributes = null;
         float totalValue = 0;
@@ -25,11 +31,8 @@ public class Book extends LibraryContent {
 
                 totalValue += price;
             }
-            return totalValue;
         }
-        else {
-            return 0f;
-        }
+        return totalValue;
     }
 
 }

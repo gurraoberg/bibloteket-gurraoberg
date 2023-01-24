@@ -48,15 +48,17 @@ public class App
                             System.out.println("## Register a new book");
                             System.out.print("Book Title: ");
                             String readTitle = sc.nextLine();
+                            System.out.print("Author: ");
+                            String readAuthor = sc.nextLine();
                             System.out.print("Purchase Price: ");
                             String readPrice = sc.nextLine();
                             System.out.print("Pages: ");
                             String readAmountOfPages = sc.nextLine();
 
-                            String addBook = content.registerItem(readTitle, readPrice, readAmountOfPages, "bookList.csv");
+                            String addBook = book.registerBook(readTitle, readPrice, readAmountOfPages, readAuthor, "bookList.csv");
                             bookList.add(addBook);
 
-                            System.out.println("Added " + book.capitalizeString(readTitle) + " to library.");
+                            System.out.println("Added " + capitalizeString(readTitle) + " to library.");
                         }
                         else if (subMenuChoice == 2) {
                             // Do register CD
@@ -66,6 +68,8 @@ public class App
                             System.out.println("## Register a new CD");
                             System.out.print("Album Title: ");
                             String readTitle = sc.nextLine();
+                            System.out.print("Artist: ");
+                            String readArtist = sc.nextLine();
                             System.out.print("Purchase Price: ");
                             String readPrice = sc.nextLine();
                             System.out.print("Amount of tracks: ");
@@ -73,7 +77,7 @@ public class App
                             System.out.print("Purchase Year: ");
                             String readYear = sc.nextLine();
 
-                            String addCD = cd.registerCD(readTitle, readPrice, readTracks,readYear, "cdList.csv");
+                            String addCD = cd.registerCD(readTitle, readPrice, readTracks,readYear,readArtist, "cdList.csv");
                             cdList.add(addCD);
                         }
                         else if (subMenuChoice == 3 ) {
@@ -122,6 +126,12 @@ public class App
     private static String mainMenu() {
         String mainMenu = "\nLibrary Main Menu\n1. Register new item\n2. List library\n3. Check Library Value\n0. Exit\nEnter your menu choice: ";
         return mainMenu;
+    }
+
+    /* This method capitalizes a string. */
+    public static String capitalizeString(String toCapitalize) {
+        String newString = toCapitalize.substring(0,1).toUpperCase() + toCapitalize.substring(1);
+        return newString;
     }
 }
 

@@ -13,16 +13,20 @@ public class CD extends LibraryContent {
 
     public CD() {}
 
-    public String registerCD(String title, String purchasePrice, String tracks,String year, String fileName) throws IOException {
-        Book book = new Book();
-        String toAdd = book.capitalizeString(title) + ", " + purchasePrice + ", " + tracks + ", " + year;
+    /* Method to add a CD into the library. */
+    public String registerCD(String title, String purchasePrice, String tracks,String year,String artist, String fileName) throws IOException {
+        String toAdd = App.capitalizeString(title) + ", " + purchasePrice + ", " + tracks + ", " + year + ", " + App.capitalizeString(artist);
         writeToCSV(fileName, toAdd);
         return toAdd;
     }
 
+    /* Method to calculate the total value of all the CDs in the library.
+     * Value changes depending on how old the CD is.
+     * Should decrease 3% in value each year.
+     */
     public float getTotalCDValue(List<String> list) {
         String[] attributes = null;
-        float totalValue = 0;
+        float totalValue = 0f;
         int currentYear = Year.now().getValue();
         if (list.size() > 0) {
             for (String cd : list) {
@@ -31,7 +35,6 @@ public class CD extends LibraryContent {
                 int year = Integer.parseInt(attributes[3]);
                 double cdAge = currentYear - year;
                 if (cdAge > 0) {
-                    //Should decrease in value by 3% every year.
                     float newValue = (float) (price * Math.pow(0.97f, cdAge));
                     totalValue += newValue;
                 }
@@ -39,10 +42,7 @@ public class CD extends LibraryContent {
                     totalValue += price;
                 }
             }
-            return totalValue;
         }
-        else {
-            return 0f;
-        }
+        return totalValue;
     }
 }
