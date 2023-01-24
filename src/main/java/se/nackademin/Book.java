@@ -15,7 +15,7 @@ public class Book extends LibraryContent {
         return newString;
     }
 
-    public void getTotalBookValue(List<String> list) {
+    public float getTotalBookValue(List<String> list) {
         String[] attributes = null;
         float totalValue = 0;
         if (list.size() > 0) {
@@ -25,11 +25,10 @@ public class Book extends LibraryContent {
 
                 totalValue += price;
             }
-            System.out.println("");
-            System.out.println("Total value of all our books is " + totalValue + "sek");
+            return totalValue;
         }
         else {
-            System.out.println("No data");
+            return 0f;
         }
     }
 

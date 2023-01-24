@@ -87,8 +87,15 @@ public class App
                         Thread.sleep(700);
                         break;
                     case 3:
-                        book.getTotalBookValue(bookList);
-                        cd.getTotalCDValue(cdList);
+                        float totalBookValue = book.getTotalBookValue(bookList);
+                        System.out.println("");
+                        System.out.println("Total value of all our books is " + totalBookValue + "sek");
+
+                        float totalCDValue = cd.getTotalCDValue(cdList);
+                        System.out.println("");
+                        System.out.println("CDs decrease 3% in value each year.");
+                        System.out.println("Total value of all our CDs is " + totalCDValue + "sek");
+
                         Thread.sleep(700);
                         break;
                     case 0:

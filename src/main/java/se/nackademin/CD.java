@@ -20,7 +20,7 @@ public class CD extends LibraryContent {
         return toAdd;
     }
 
-    public void getTotalCDValue(List<String> list) {
+    public float getTotalCDValue(List<String> list) {
         String[] attributes = null;
         float totalValue = 0;
         int currentYear = Year.now().getValue();
@@ -39,12 +39,10 @@ public class CD extends LibraryContent {
                     totalValue += price;
                 }
             }
-            System.out.println("");
-            System.out.println("CDs decrease 3% in value each year.");
-            System.out.println("Total value of all our CDs is " + totalValue + "sek");
+            return totalValue;
         }
         else {
-            System.out.println("No data");
+            return 0f;
         }
     }
 }
