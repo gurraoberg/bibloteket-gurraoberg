@@ -17,7 +17,8 @@
 1. ``String title``
 2. ``float pruchasPrice``
 3. ``int amountOfTracks``
-4. ``String artist``
+4. ``int year``
+5. ``String artist``
 ## Movie
 1. ``String title``
 2. ``float purchasePrice``
