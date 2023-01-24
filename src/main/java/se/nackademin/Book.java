@@ -25,6 +25,7 @@ public class Book extends LibraryContent {
 
                 totalValue += price;
             }
+            System.out.println("");
             System.out.println("Total value of all our books is " + totalValue + "sek");
         }
         else {

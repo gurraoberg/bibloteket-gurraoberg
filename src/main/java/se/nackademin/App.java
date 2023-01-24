@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import java.util.InputMismatchException;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,11 +14,12 @@ public class App
     final static List<String> cdList = new ArrayList<String>();
     final static List<String> movieList = new ArrayList<String>();
 
-    public static void main( String[] args ) throws InterruptedException, IOException
+    public static void main( String[] args ) throws InterruptedException, IOException, SQLException
     {
 
         LibraryContent content = new LibraryContent();
         Book book = new Book();
+        CD cd = new CD();
 
         content.readFromCSV("bookList.csv", bookList);
         content.readFromCSV("cdList.csv", cdList);
@@ -68,8 +70,10 @@ public class App
                             String readPrice = sc.nextLine();
                             System.out.print("Amount of tracks: ");
                             String readTracks = sc.nextLine();
+                            System.out.print("Purchase Year: ");
+                            String readYear = sc.nextLine();
 
-                            String addCD = content.registerItem(readTitle, readPrice, readTracks, "cdList.csv");
+                            String addCD = cd.registerCD(readTitle, readPrice, readTracks,readYear, "cdList.csv");
                             cdList.add(addCD);
                         }
                         else if (subMenuChoice == 3 ) {
@@ -83,6 +87,9 @@ public class App
                         Thread.sleep(700);
                         break;
                     case 3:
+                        book.getTotalBookValue(bookList);
+                        cd.getTotalCDValue(cdList);
+                        Thread.sleep(700);
                         break;
                     case 0:
                         mainLoop = false;
@@ -106,7 +113,7 @@ public class App
     }
 
     private static String mainMenu() {
-        String mainMenu = "\nLibrary Main Menu\n1. Register new item\n2. List library\n3. Download library content\n0. Exit\nEnter your menu choice: ";
+        String mainMenu = "\nLibrary Main Menu\n1. Register new item\n2. List library\n3. Check Library Value\n0. Exit\nEnter your menu choice: ";
         return mainMenu;
     }
 }
