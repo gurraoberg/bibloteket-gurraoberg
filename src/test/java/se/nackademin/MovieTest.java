@@ -4,10 +4,40 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.Test;
 
 public class MovieTest {
+
+    @Test
+    public void shouldTestTotalMovieValue() {
+        List<String> list = new ArrayList<String>();
+        Movie movie = new Movie("Avatar", 199.49f, 135, "James Cameron");
+        String title = movie.getTitle();
+        float purchasePrice = movie.getPurchasePrice();
+        String director = movie.getDirector();
+        int playTime = movie.getPlayTime();
+        String toAdd = title + ", " +  purchasePrice + ", " +  playTime + ", " + director;
+        list.add(toAdd);
+        float value = movie.getTotalMovieValue(list);
+        assertNotEquals(value, 199.49f, 0.0f);
+    }
+
+    @Test
+    public void shouldPassIfPlayTimeIsUnder100() {
+        List<String> list = new ArrayList<String>();
+        Movie movie = new Movie("Avatar", 199.49f, 90, "James Cameron");
+        String title = movie.getTitle();
+        float purchasePrice = movie.getPurchasePrice();
+        String director = movie.getDirector();
+        int playTime = movie.getPlayTime();
+        String toAdd = title + ", " +  purchasePrice + ", " +  playTime + ", " + director;
+        list.add(toAdd);
+        float value = movie.getTotalMovieValue(list);
+        assertEquals(value, 199.49f, 0.0f);
+    }
 
     @Test
     public void shouldTestValueNotEqual() {
