@@ -17,6 +17,7 @@ public class LibraryContent implements LibraryContentInterface {
 
     public LibraryContent() {}
 
+    /* Calculates the total value of the whole library. */
     public float getTotalValue(List<String> bookList, List<String> cdList, List<String> movieList) {
         Movie movie = new Movie();
         float movieValue = movie.getTotalMovieValue(movieList);
@@ -77,6 +78,7 @@ public class LibraryContent implements LibraryContentInterface {
         System.out.println("----------------------------------------------------------");
     }
 
+    /* Saves the added data to a csv file. */
     @Override
     public void writeToCSV(String fileName, String toAdd) throws IOException {
         FileWriter writer = new FileWriter(fileName, true);
@@ -85,6 +87,7 @@ public class LibraryContent implements LibraryContentInterface {
         writer.close();
     }
 
+    /* Reads the saved data from a csv and loads it into lists if the csv file is created. */
     @Override
     public void readFromCSV(String fileName, List<String> list) throws IOException {
         try(BufferedReader br = new BufferedReader(new FileReader(fileName))) {
