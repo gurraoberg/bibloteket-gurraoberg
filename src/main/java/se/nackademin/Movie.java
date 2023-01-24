@@ -41,8 +41,6 @@ public class Movie extends LibraryContent {
                 else {
                     totalValue += price;
                 }
-
-                //totalValue += price;
             }
         }
         return totalValue;

@@ -14,6 +14,16 @@ public class LibraryContent implements LibraryContentInterface {
 
     public LibraryContent() {}
 
+    public float getTotalValue(List<String> bookList, List<String> cdList, List<String> movieList) {
+        Movie movie = new Movie();
+        float movieValue = movie.getTotalMovieValue(movieList);
+        Book book = new Book();
+        float bookValue = book.getTotalBookValue(bookList);
+        CD cd = new CD();
+        float cdValue = cd.getTotalCDValue(cdList);
+        return movieValue + bookValue + cdValue;
+    }
+
     @Override
     public void getLibraryContent(List<String> bookList, List<String> cdList, List<String> movieList) {
         getBookContent(bookList);

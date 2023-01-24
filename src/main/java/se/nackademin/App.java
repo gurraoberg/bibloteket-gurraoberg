@@ -108,20 +108,25 @@ public class App
                         float totalBookValue = book.getTotalBookValue(bookList);
                         float totalCDValue = cd.getTotalCDValue(cdList);
                         float totalMovieValue = movie.getTotalMovieValue(movieList);
+                        float libraryValue = content.getTotalValue(bookList, cdList, movieList);
 
                         if (totalBookValue > 0) {
                             System.out.println("");
-                            System.out.println("Total value of all our books is " + totalBookValue + "sek");
+                            System.out.println("Total value of all our books is " + totalBookValue + "sek.");
                         }
                         if (totalCDValue > 0) {
                             System.out.println("");
                             System.out.println("CDs decrease 3% in value each year.");
-                            System.out.println("Total value of all our CDs is " + totalCDValue + "sek");
+                            System.out.println("Total value of all our CDs is " + totalCDValue + "sek.");
                         }
                         if (totalMovieValue > 0) {
                             System.out.println("");
                             System.out.println("A movies value increases if the playtime is greater than 100minutes.");
-                            System.out.println("Total value of all our movies is " + totalMovieValue + "sek");
+                            System.out.println("Total value of all our movies is " + totalMovieValue + "sek.");
+                        }
+                        if (libraryValue >= 0) {
+                            System.out.println("");
+                            System.out.println("Total value of the whole library is " + libraryValue + "sek.");
                         }
                         else {
                             System.out.println("No Data");
