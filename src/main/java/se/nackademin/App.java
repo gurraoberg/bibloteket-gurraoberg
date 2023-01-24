@@ -92,26 +92,33 @@ public class App
                         break;
                     case 3:
                         float totalBookValue = book.getTotalBookValue(bookList);
-                        System.out.println("");
-                        System.out.println("Total value of all our books is " + totalBookValue + "sek");
-
                         float totalCDValue = cd.getTotalCDValue(cdList);
-                        System.out.println("");
-                        System.out.println("CDs decrease 3% in value each year.");
-                        System.out.println("Total value of all our CDs is " + totalCDValue + "sek");
+
+                        if (totalBookValue < 0) {
+                            System.out.println("");
+                            System.out.println("Total value of all our books is " + totalBookValue + "sek");
+                        }
+                        else if (totalCDValue < 0) {
+                            System.out.println("");
+                            System.out.println("CDs decrease 3% in value each year.");
+                            System.out.println("Total value of all our CDs is " + totalCDValue + "sek");
+                        }
+                        else {
+                            System.out.println("No Data");
+                        }
 
                         Thread.sleep(700);
                         break;
-                    case 0:
-                        mainLoop = false;
-                    default : 
+                    default :
                         System.out.println("\nInvalid input");
                         Thread.sleep(500);
                         break;
+                    case 0:
+                        mainLoop = false;
                 }
             }
                 catch (InputMismatchException e) {
-                    System.out.println("Invalid input" + e);
+                    System.out.println("Only numbers allowed " + e);
                     break;
             }
         }
