@@ -1,6 +1,7 @@
 package se.nackademin;
 
 import java.io.*;
+import java.util.Arrays;
 import java.util.List;
 
 public class LibraryContent implements LibraryContentInterface {
@@ -91,6 +92,19 @@ public class LibraryContent implements LibraryContentInterface {
             }
         } catch (FileNotFoundException e) {
             System.out.println("File Not Found");
+        }
+    }
+
+    public void getTitleFromLibrary(List<String> list, String input) {
+        String[] attributes = null;
+        if (list.size() > 0) {
+            for (String library : list) {
+                attributes = library.split(", ");
+                String title = attributes[0];
+                if (title.contains(input)) {
+                    System.out.println(Arrays.toString(attributes));
+                }
+            }
         }
     }
 }

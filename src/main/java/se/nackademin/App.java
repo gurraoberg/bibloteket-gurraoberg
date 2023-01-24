@@ -134,6 +134,12 @@ public class App
 
                         Thread.sleep(700);
                         break;
+                    case 4:
+                        sc.nextLine();
+                        System.out.print("Item Title: ");
+                        String readTitle = sc.nextLine();
+                        content.getTitleFromLibrary(movieList, capitalizeString(readTitle));
+                        break;
                     default :
                         System.out.println("\nInvalid input");
                         Thread.sleep(500);
@@ -156,7 +162,7 @@ public class App
     }
 
     private static String mainMenu() {
-        String mainMenu = "\nLibrary Main Menu\n1. Register new item\n2. List library\n3. Check Library Value\n0. Exit\nEnter your menu choice: ";
+        String mainMenu = "\nLibrary Main Menu\n1. Register new item\n2. List library\n3. Check Library Value\n4. Search\n0. Exit\nEnter your menu choice: ";
         return mainMenu;
     }
 
