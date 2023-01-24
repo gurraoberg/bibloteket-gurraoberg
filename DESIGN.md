@@ -4,7 +4,7 @@
 - [x] writeToFile
 - [x] readFromFile
 - [x] registerCD
-- [ ] registerMovie
+- [x] registerMovie
 - [x] registerBook
 - [x] getLibraryContent
 
@@ -22,5 +22,5 @@
 ## Movie
 1. ``String title``
 2. ``float purchasePrice``
-3. ``float playTime``
+3. ``int playTime``
 4. ``String director``
