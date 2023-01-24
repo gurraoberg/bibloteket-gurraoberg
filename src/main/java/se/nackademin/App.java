@@ -20,6 +20,7 @@ public class App
         LibraryContent content = new LibraryContent();
         Book book = new Book();
         CD cd = new CD();
+        Movie movie = new Movie();
 
         content.readFromCSV("bookList.csv", bookList);
         content.readFromCSV("cdList.csv", cdList);
@@ -50,7 +51,7 @@ public class App
                             String readTitle = sc.nextLine();
                             System.out.print("Author: ");
                             String readAuthor = sc.nextLine();
-                            System.out.print("Purchase Price: ");
+                            System.out.print("Purchase Price(sek): ");
                             String readPrice = sc.nextLine();
                             System.out.print("Pages: ");
                             String readAmountOfPages = sc.nextLine();
@@ -70,7 +71,7 @@ public class App
                             String readTitle = sc.nextLine();
                             System.out.print("Artist: ");
                             String readArtist = sc.nextLine();
-                            System.out.print("Purchase Price: ");
+                            System.out.print("Purchase Price(sek): ");
                             String readPrice = sc.nextLine();
                             System.out.print("Amount of tracks: ");
                             String readTracks = sc.nextLine();
@@ -82,7 +83,20 @@ public class App
                         }
                         else if (subMenuChoice == 3 ) {
                             // Do register Movie
-                            System.out.println("Register Movie");
+                            System.out.println(""); // For looks
+                            sc.nextLine();
+                            System.out.println("## Register a new Movie");
+                            System.out.print("Movie Title: ");
+                            String readTitle = sc.nextLine();
+                            System.out.print("Director: ");
+                            String readDirector = sc.nextLine();
+                            System.out.print("Purchase Price(sek): ");
+                            String readPrice = sc.nextLine();
+                            System.out.print("Playtime(min): ");
+                            String readPlayTime= sc.nextLine();
+
+                            String addMovie = movie.registerMovie(readTitle, readPrice, readDirector, readPlayTime, "movieList.csv");
+                            movieList.add(addMovie);
                         }
                         Thread.sleep(700);
                         break;
@@ -93,15 +107,21 @@ public class App
                     case 3:
                         float totalBookValue = book.getTotalBookValue(bookList);
                         float totalCDValue = cd.getTotalCDValue(cdList);
+                        float totalMovieValue = movie.getTotalMovieValue(movieList);
 
-                        if (totalBookValue < 0) {
+                        if (totalBookValue > 0) {
                             System.out.println("");
                             System.out.println("Total value of all our books is " + totalBookValue + "sek");
                         }
-                        else if (totalCDValue < 0) {
+                        if (totalCDValue > 0) {
                             System.out.println("");
                             System.out.println("CDs decrease 3% in value each year.");
                             System.out.println("Total value of all our CDs is " + totalCDValue + "sek");
+                        }
+                        if (totalMovieValue > 0) {
+                            System.out.println("");
+                            System.out.println("A movies value increases if the playtime is greater than 100minutes.");
+                            System.out.println("Total value of all our movies is " + totalMovieValue + "sek");
                         }
                         else {
                             System.out.println("No Data");
