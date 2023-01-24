@@ -3,6 +3,7 @@ package se.nackademin;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class LibraryContent implements LibraryContentInterface {
@@ -96,11 +97,16 @@ public class LibraryContent implements LibraryContentInterface {
         }
     }
 
+    /* Search method for the whole library.
+     * Can search by any title that contains the input letters.
+     * Sorts by alphabetical order if there are more than one displayed.
+     */
     public void getTitleFromLibrary(List<String> bookList, List<String> cdList, List<String> movieList, String input) {
         List<String> libraryList = new ArrayList<String>();
         libraryList.addAll(bookList);
         libraryList.addAll(movieList);
         libraryList.addAll(cdList);
+        Collections.sort(libraryList);
         String[] attributes = null;
         if (libraryList.size() > 0) {
             for (String library : libraryList) {
