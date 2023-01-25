@@ -54,14 +54,13 @@ public class MovieTest {
     }
 
     @Test
-    public void shouldRegisterMovie() throws IOException {
-        Movie movie = new Movie("Avatar", 199.49f, 135, "James Cameron");
-        String title = movie.getTitle();
-        float purchasePrice = movie.getPurchasePrice();
-        String director = movie.getDirector();
-        int playTime = movie.getPlayTime();
-        String addMovie = movie.registerMovie("Avatar", "199.49", "135", "James Cameron", "movieList.csv");
+    public void sholdCreateNewMovie() throws IOException {
+        Movie newMovie = new Movie().createMovie(null, 0, 0, null);
+        String title = newMovie.getTitle();
+        float purchasePrice = newMovie.getPurchasePrice();
+        String director = newMovie.getDirector();
+        int playTime = newMovie.getPlayTime();
         String toCompare = title + ", " +  purchasePrice + ", " +  playTime + ", " + director;
-        assertEquals(toCompare, addMovie);
+        assertEquals(newMovie.toString(), toCompare);
     }
 }
