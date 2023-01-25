@@ -4,7 +4,6 @@ import java.util.Scanner;
 
 import java.util.InputMismatchException;
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,7 +13,7 @@ public class App
     final static List<String> cdList = new ArrayList<String>();
     final static List<String> movieList = new ArrayList<String>();
 
-    public static void main( String[] args ) throws InterruptedException, IOException, SQLException
+    public static void main( String[] args ) throws InterruptedException, IOException
     {
 
         LibraryContent content = new LibraryContent();
