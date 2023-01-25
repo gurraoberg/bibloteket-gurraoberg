@@ -8,20 +8,29 @@ import java.lang.Math;
 public class CD extends LibraryContent {
     int tracks;
     String artist;
+    int year;
 
-    public CD(String title, float purchasePrice, int tracks, String artist) {
+    public CD(String title, float purchasePrice, int tracks, int year, String artist) {
         super(title, purchasePrice);
         this.tracks = tracks;
         this.artist = artist;
+        this.year = year;
     }
 
     public CD() {}
 
-    /* Method to add a CD into the library. */
-    public String registerCD(String title, String purchasePrice, String tracks,String year,String artist, String fileName) throws IOException {
-        String toAdd = App.capitalizeString(title) + ", " + purchasePrice + ", " + tracks + ", " + year + ", " + App.capitalizeString(artist);
-        writeToCSV(fileName, toAdd);
-        return toAdd;
+    /* Creates a new CD.
+     * Saves the CD into a CSV file.
+     */
+    public CD createCD(String title, float purchasePrice, int tracks, int year, String artist) throws IOException {
+        CD newCD = new CD(title, purchasePrice, tracks, year, artist);
+        writeToCSV("cdList.csv", newCD.toString());
+        return newCD;
+    }
+
+    @Override
+    public String toString() {
+      return this.getTitle() + ", " + this.getPurchasePrice() + ", " + this.getTracks() + ", " + this.getYear() + ", " + this.getArtist();
     }
 
     /* Method to calculate the total value of all the CDs in the library.
@@ -48,5 +57,17 @@ public class CD extends LibraryContent {
             }
         }
         return totalValue;
+    }
+
+    private int getTracks() {
+        return this.tracks;
+    }
+
+    private String getArtist() {
+        return this.artist;
+    }
+
+    private int getYear() {
+        return this.year;
     }
 }

@@ -15,11 +15,18 @@ public class Book extends LibraryContent {
 
     public Book() {}
 
-    /* Method to add a book into the library. */
-    public String registerBook(String title, String purchasePrice, String pages,String author, String fileName) throws IOException {
-        String toAdd = App.capitalizeString(title) + ", " + purchasePrice + ", " + pages + ", " + App.capitalizeString(author);
-        writeToCSV(fileName, toAdd);
-        return toAdd;
+    /* Creates a new book.
+     * Saves the book into a CSV file.
+     */
+    public Book createBook(String title, float purchasePrice, int pages, String author) throws IOException {
+        Book newBook = new Book(title, purchasePrice, pages, author);
+        writeToCSV("bookList.csv", newBook.toString());
+        return newBook;
+    }
+
+    @Override
+    public String toString() {
+      return this.getTitle() + ", " + this.getPurchasePrice() + ", " + this.getPages() + ", " + this.getAuthor();
     }
 
     /* Method to calculate the total value of all the books that are in the library.
@@ -37,6 +44,14 @@ public class Book extends LibraryContent {
             }
         }
         return totalValue;
+    }
+
+    private int getPages() {
+        return this.pages;
+    }
+
+    private String getAuthor() {
+        return this.author;
     }
 
 }

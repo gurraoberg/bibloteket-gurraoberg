@@ -20,11 +20,18 @@ public class Movie extends LibraryContent {
         this.totalMovieValue = totalMovieValue;
     }
 
-    /* Method to add a movie into the library. */
-    public String registerMovie(String title, String purchasePrice, String playTime, String director, String fileName) throws IOException {
-        String toAdd = App.capitalizeString(title) + ", " + purchasePrice + ", " + playTime + ", " + App.capitalizeString(director);
-        writeToCSV(fileName, toAdd);
-        return toAdd;
+    /* Creates a new movie.
+     * And saves it to a CSV file.
+     */
+    public Movie createMovie(String title, float purchasePrice, int playTime, String director) throws IOException {
+        Movie newMovie = new Movie(title, purchasePrice, playTime, director);
+        writeToCSV("movieList.csv", newMovie.toString());
+        return newMovie;
+    }
+
+    @Override
+    public String toString() {
+      return this.getTitle() + ", " + this.getPurchasePrice() + ", " + this.getPlayTime() + ", " + this.getDirector();
     }
 
     /* Method to calculate the total value of all the movies that are in the library.

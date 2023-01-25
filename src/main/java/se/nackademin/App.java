@@ -52,14 +52,12 @@ public class App
                             System.out.print("Author: ");
                             String readAuthor = sc.nextLine();
                             System.out.print("Purchase Price(sek): ");
-                            String readPrice = sc.nextLine();
+                            float readPrice = sc.nextFloat();
                             System.out.print("Pages: ");
-                            String readAmountOfPages = sc.nextLine();
+                            int readAmountOfPages = sc.nextInt();
 
-                            String addBook = book.registerBook(readTitle, readPrice, readAmountOfPages, readAuthor, "bookList.csv");
-                            bookList.add(addBook);
-
-                            System.out.println("Added " + capitalizeString(readTitle) + " to library.");
+                            Book newBook = book.createBook(readTitle, readPrice, readAmountOfPages, readAuthor);
+                            bookList.add(newBook.toString());
                         }
                         else if (subMenuChoice == 2) {
                             // Do register CD
@@ -72,14 +70,14 @@ public class App
                             System.out.print("Artist: ");
                             String readArtist = sc.nextLine();
                             System.out.print("Purchase Price(sek): ");
-                            String readPrice = sc.nextLine();
+                            float readPrice = sc.nextFloat();
                             System.out.print("Amount of tracks: ");
-                            String readTracks = sc.nextLine();
+                            int readTracks = sc.nextInt();
                             System.out.print("Purchase Year: ");
-                            String readYear = sc.nextLine();
+                            int readYear = sc.nextInt();
 
-                            String addCD = cd.registerCD(readTitle, readPrice, readTracks,readYear,readArtist, "cdList.csv");
-                            cdList.add(addCD);
+                            CD newCD = cd.createCD(readTitle, readPrice, readTracks, readYear, readArtist);
+                            cdList.add(newCD.toString());
                         }
                         else if (subMenuChoice == 3 ) {
                             // Do register Movie
@@ -91,12 +89,12 @@ public class App
                             System.out.print("Director: ");
                             String readDirector = sc.nextLine();
                             System.out.print("Purchase Price(sek): ");
-                            String readPrice = sc.nextLine();
+                            float readPrice = sc.nextFloat();
                             System.out.print("Playtime(min): ");
-                            String readPlayTime= sc.nextLine();
+                            int readPlayTime= sc.nextInt();
 
-                            String addMovie = movie.registerMovie(readTitle, readPrice, readPlayTime, readDirector, "movieList.csv");
-                            movieList.add(addMovie);
+                            Movie newMovie = movie.createMovie(readTitle, readPrice, readPlayTime, readDirector);
+                            movieList.add(newMovie.toString());
                         }
                         Thread.sleep(700);
                         break;
@@ -138,7 +136,7 @@ public class App
                         sc.nextLine();
                         System.out.print("Item Title: ");
                         String readTitle = sc.nextLine();
-                        content.getTitleFromLibrary(bookList, cdList, movieList, capitalizeString(readTitle));
+                        content.getTitleFromLibrary(bookList, cdList, movieList, readTitle);
                         break;
                     default :
                         System.out.println("\nInvalid input");
@@ -164,12 +162,6 @@ public class App
     private static String mainMenu() {
         String mainMenu = "\nLibrary Main Menu\n1. Register new item\n2. List library\n3. Check Library Value\n4. Search\n0. Exit\nEnter your menu choice: ";
         return mainMenu;
-    }
-
-    /* This method capitalizes a string. */
-    public static String capitalizeString(String toCapitalize) {
-        String newString = toCapitalize.substring(0,1).toUpperCase() + toCapitalize.substring(1);
-        return newString;
     }
 }
 
