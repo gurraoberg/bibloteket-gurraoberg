@@ -7,6 +7,7 @@
 - [x] registerMovie
 - [x] registerBook
 - [x] getLibraryContent
+- [x] getTotalLibraryValue
 
 ## Book
 1. ``String title``
