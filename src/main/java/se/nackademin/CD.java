@@ -2,7 +2,6 @@ package se.nackademin;
 
 import java.io.IOException;
 import java.time.Year;
-import java.util.ArrayList;
 import java.util.List;
 import java.lang.Math;
 
@@ -27,6 +26,7 @@ public class CD extends LibraryContent {
     public CD createCD(String title, float purchasePrice, int tracks, int year, String artist) throws IOException {
         CD newCD = new CD(title, purchasePrice, tracks, year, artist);
         writeToCSV("cdList.csv", newCD.toString());
+        totalCDValue += purchasePrice;
         return newCD;
     }
 
@@ -40,6 +40,7 @@ public class CD extends LibraryContent {
      * Should decrease 3% in value each year.
      */
     public float getTotalCDValue(List<String> list) {
+        totalCDValue = 0f;
         String[] attributes = null;
         int currentYear = Year.now().getValue();
         if (list.size() > 0) {

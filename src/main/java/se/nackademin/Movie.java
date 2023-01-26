@@ -26,6 +26,7 @@ public class Movie extends LibraryContent {
     public Movie createMovie(String title, float purchasePrice, int playTime, String director) throws IOException {
         Movie newMovie = new Movie(title, purchasePrice, playTime, director);
         writeToCSV("movieList.csv", newMovie.toString());
+        this.totalMovieValue += purchasePrice;
         return newMovie;
     }
 
@@ -39,6 +40,7 @@ public class Movie extends LibraryContent {
        Then the movie increases 1 sek in price by every minute over 100.
     */
     public float getTotalMovieValue(List<String> list) {
+        this.totalMovieValue = 0f;
         String[] attributes = null;
         if (list.size() > 0) {
             for (String movie : list) {
@@ -47,14 +49,15 @@ public class Movie extends LibraryContent {
                 this.playTime = Integer.parseInt(attributes[2]);
                 if (this.playTime > 100) {
                     int addSek = playTime - 100;
-                    this.totalMovieValue += price + addSek;
+                    float toAdd = price + addSek;
+                    this.totalMovieValue += toAdd;
                 }
                 else {
                     this.totalMovieValue += price;
                 }
             }
-        }
-        return this.totalMovieValue;
+    }
+    return this.totalMovieValue;
     }
 
     public String getDirector() {

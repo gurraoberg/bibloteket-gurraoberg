@@ -6,6 +6,7 @@ import java.util.List;
 public class Book extends LibraryContent {
     int pages;
     String author;
+    float totalValue;
 
     public Book(String title, float purchasePrice, int pages, String author) {
         super(title, purchasePrice);
@@ -21,6 +22,7 @@ public class Book extends LibraryContent {
     public Book createBook(String title, float purchasePrice, int pages, String author) throws IOException {
         Book newBook = new Book(title, purchasePrice, pages, author);
         writeToCSV("bookList.csv", newBook.toString());
+        totalValue += purchasePrice;
         return newBook;
     }
 
@@ -33,8 +35,8 @@ public class Book extends LibraryContent {
     /* A book always has the same value.
     */
     public float getTotalBookValue(List<String> list) {
+        totalValue = 0f;
         String[] attributes = null;
-        float totalValue = 0;
         if (list.size() > 0) {
             for (String book : list) {
                 attributes = book.split(", ");
