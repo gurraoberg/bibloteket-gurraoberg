@@ -22,12 +22,11 @@ public class CDTest {
 
     @Test
     public void shouldTestElseConditionOnTotalValue() throws IOException {
-        //CD cd = new CD().createCD("title", 900, 0, 2023, "artist");
-        CD cd = new CD();
+        CD cd = new CD().createCD("null", 100, 0, 2023, "null");
         cd.readFromCSV("cdList.csv", App.cdList);
         float value = cd.getTotalCDValue(App.cdList);
         int currentYear = Year.now().getValue();
-        double cdAge = currentYear - cd.year;
+        int cdAge = currentYear - cd.year;
         float cdValue = cd.getTotalValue();
         if (cdAge > 0) {
             assertEquals(value, cdValue, 0);
