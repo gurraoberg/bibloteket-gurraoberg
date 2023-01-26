@@ -98,9 +98,15 @@ public class LibraryContent implements LibraryContentInterface {
     public void readFromCSV(String fileName, List<String> list) throws IOException {
         try(BufferedReader br = new BufferedReader(new FileReader(fileName))) {
             String line = "";
+            String[] attributes = null;
             while ((line = br.readLine()) != null) {
                 list.add(line);
+                for (String x : list) {
+                    attributes = x.split(", ");
+                    float price = Float.parseFloat(attributes[1]);
+                    this.totalValue += price;
             }
+        }
         } catch (FileNotFoundException e) {
             System.out.println("File Not Found");
         }
