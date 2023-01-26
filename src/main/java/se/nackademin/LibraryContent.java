@@ -35,6 +35,7 @@ public class LibraryContent implements LibraryContentInterface {
         return this.totalValue;
     }
 
+    /* Prints the library content to the user if there is any. */
     @Override
     public void getLibraryContent(List<String> bookList, List<String> cdList, List<String> movieList) {
         getBookContent(bookList);
