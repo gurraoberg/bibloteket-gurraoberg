@@ -11,5 +11,5 @@ public interface LibraryContentInterface {
 
     public void getLibraryContent(List<String> bookList, List<String> cdList, List<String> movieList);
 
-    
+    public float getTotalValue(List<String> bookList, List<String> cdList, List<String> movieList);
 }

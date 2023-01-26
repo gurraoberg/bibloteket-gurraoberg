@@ -23,6 +23,7 @@ public class LibraryContent implements LibraryContentInterface {
     }
 
     /* Calculates the total value of the whole library. */
+    @Override
     public float getTotalValue(List<String> bookList, List<String> cdList, List<String> movieList) {
         Movie movie = new Movie();
         float movieValue = movie.getTotalMovieValue(movieList);
