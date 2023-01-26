@@ -2,6 +2,7 @@ package se.nackademin;
 
 import java.io.IOException;
 import java.time.Year;
+import java.util.ArrayList;
 import java.util.List;
 import java.lang.Math;
 
@@ -9,6 +10,7 @@ public class CD extends LibraryContent {
     int tracks;
     String artist;
     int year;
+    float totalCDValue;
 
     public CD(String title, float purchasePrice, int tracks, int year, String artist) {
         super(title, purchasePrice);
@@ -39,7 +41,6 @@ public class CD extends LibraryContent {
      */
     public float getTotalCDValue(List<String> list) {
         String[] attributes = null;
-        float totalValue = 0f;
         int currentYear = Year.now().getValue();
         if (list.size() > 0) {
             for (String cd : list) {
@@ -49,25 +50,29 @@ public class CD extends LibraryContent {
                 double cdAge = currentYear - year;
                 if (cdAge > 0) {
                     float newValue = (float) (price * Math.pow(0.97f, cdAge));
-                    totalValue += newValue;
+                    totalCDValue += newValue;
                 }
                 else {
-                    totalValue += price;
+                    totalCDValue += price;
                 }
             }
         }
-        return totalValue;
+        return totalCDValue;
     }
 
-    private int getTracks() {
+    public int getTracks() {
         return this.tracks;
     }
 
-    private String getArtist() {
+    public String getArtist() {
         return this.artist;
     }
 
-    private int getYear() {
+    public int getYear() {
         return this.year;
+    }
+
+    public float getTotalValue() {
+        return totalCDValue;
     }
 }

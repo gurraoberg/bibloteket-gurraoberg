@@ -1,7 +1,6 @@
 package se.nackademin;
 
 import java.util.Scanner;
-
 import java.util.InputMismatchException;
 import java.io.IOException;
 import java.util.ArrayList;

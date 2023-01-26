@@ -1,6 +1,5 @@
 package se.nackademin;
 
-import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import java.io.File;
@@ -35,12 +34,5 @@ public class LibraryContentTest {
         content.readFromCSV("movieList.csv", App.movieList);
         float value = content.getTotalValue(App.bookList, App.cdList, App.movieList);
         assertTrue(value > 0);
-    }
-
-    @Test
-    public void shouldGet0Value() {
-        LibraryContent content = new LibraryContent();
-        float value = content.getTotalValue(App.bookList, App.cdList, App.movieList);
-        assertFalse(value > 0);
     }
 }

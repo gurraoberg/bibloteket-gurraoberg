@@ -46,11 +46,11 @@ public class Book extends LibraryContent {
         return totalValue;
     }
 
-    private int getPages() {
+    public int getPages() {
         return this.pages;
     }
 
-    private String getAuthor() {
+    public String getAuthor() {
         return this.author;
     }
 
